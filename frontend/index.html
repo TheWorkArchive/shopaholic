@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopaholic · Indian Fashion Store</title>
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Banner with Indian Theme -->
+    <div class="top-banner">
+        <div class="banner-content">
+            <span><i class="fas fa-indian-rupee-sign"></i> Prices in INR</span>
+            <span><i class="fas fa-truck"></i> Free Shipping on ₹999+</span>
+            <span><i class="fas fa-exchange-alt"></i> 7 Days Return</span>
+            <span><i class="fas fa-shield"></i> Secure Payment</span>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-wrapper">
+                <div class="logo">
+                    <img src="logo.jpeg" alt="Shopaholic Logo" id="logoImg" onerror="this.style.display='none'; this.parentElement.innerHTML='🛍️'; this.parentElement.style.fontSize='40px';">
+                </div>
+                <div class="brand">
+                    <h1>SHOPAHOLIC</h1>
+                    <p>India's Fashion Destination</p>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <div class="auth-buttons" id="authButtons">
+                    <button class="btn-outline" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</button>
+                    <button class="btn-primary" id="signupBtn">Sign Up</button>
+                </div>
+                <div class="user-profile" id="userProfile" style="display: none;">
+                    <span class="welcome-text">Hello, <span id="username"></span>!</span>
+                    <button class="btn-outline" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation with Categories -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="#" class="nav-item active" data-category="all"><i class="fas fa-store"></i> All</a>
+            <a href="#" class="nav-item" data-category="mens"><i class="fas fa-user"></i> Men's Wear</a>
+            <a href="#" class="nav-item" data-category="womens"><i class="fas fa-user-tie"></i> Women's Wear</a>
+            <a href="#" class="nav-item" data-category="kids"><i class="fas fa-child"></i> Kids</a>
+            <a href="#" class="nav-item" data-category="ethnic"><i class="fas fa-hands"></i> Ethnic Wear</a>
+            <a href="#" class="nav-item" data-category="footwear"><i class="fas fa-shoe-prints"></i> Footwear</a>
+        </div>
+    </nav>
+
+    <!-- Cart & Wishlist Indicators -->
+    <div class="indicators-container">
+        <div class="indicator" id="cartIndicator">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+            <span class="badge" id="cartCount">0</span>
+            <span class="indicator-total" id="cartTotal">₹0</span>
+        </div>
+        <div class="indicator" id="wishlistIndicator">
+            <i class="fas fa-heart"></i>
+            <span>Wishlist</span>
+            <span class="badge" id="wishlistCount">0</span>
+        </div>
+    </div>
+
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <div class="hero-content">
+            <h2>Monsoon Sale Live! <i class="fas fa-cloud-rain"></i></h2>
+            <p>Get 30-50% off on latest collection</p>
+            <button class="btn-primary shop-now-btn">Shop Now <i class="fas fa-arrow-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main id="mainContent">
+        <!-- Products Grid -->
+        <section class="products-section">
+            <div class="section-header">
+                <h2><i class="fas fa-crown"></i> Featured Collection</h2>
+                <div class="filter-controls">
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="all">All Categories</option>
+                        <option value="mens">Men's Wear</option>
+                        <option value="womens">Women's Wear</option>
+                        <option value="kids">Kids</option>
+                        <option value="ethnic">Ethnic Wear</option>
+                        <option value="footwear">Footwear</option>
+                    </select>
+                    <select id="sortFilter" class="filter-select">
+                        <option value="default">Sort by</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name">Name: A to Z</option>
+                    </select>
+                </div>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products loaded via JavaScript -->
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading fashionable clothes...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart <i class="fas fa-shopping-bag"></i></h3>
+            <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will appear here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-amount" id="sidebarCartTotal">₹0</span>
+            </div>
+            <button class="btn-primary checkout-btn" id="checkoutBtn">
+                <i class="fas fa-lock"></i> Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Wishlist Sidebar -->
+    <div class="wishlist-sidebar" id="wishlistSidebar">
+        <div class="wishlist-header">
+            <h3>Your Wishlist <i class="fas fa-heart"></i></h3>
+            <button class="close-wishlist" id="closeWishlist"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <!-- Wishlist items will appear here -->
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closePaymentModal">&times;</span>
+            <h2><i class="fas fa-lock"></i> Secure Checkout</h2>
+            <div class="payment-summary">
+                <h3>Order Summary</h3>
+                <div class="summary-row">
+                    <span>Items:</span>
+                    <span id="paymentItemCount">0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Total Amount:</span>
+                    <span class="total-amount" id="paymentTotal">₹0</span>
+                </div>
+            </div>
+            <div class="payment-methods">
+                <h4>Select Payment Method</h4>
+                <div class="payment-option">
+                    <input type="radio" name="payment" id="cod" checked>
+                    <label for="cod">Cash on Delivery (COD)</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" name="payment" id="card">
+                    <label for="card">Credit/Debit Card</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" name="payment" id="upi">
+                    <label for="upi">UPI (Google Pay, PhonePe, Paytm)</label>
+                </div>
+            </div>
+            <button class="btn-primary" id="placeOrderBtn" style="width:100%; margin-top:1rem;">
+                <i class="fas fa-check"></i> Place Order
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Shopaholic</h4>
+                <p>India's favorite online fashion store</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#">About Us</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQs</a>
+                <a href="#">Shipping Policy</a>
+            </div>
+            <div class="footer-section">
+                <h4>Download App</h4>
+                <div class="app-buttons">
+                    <button class="app-btn"><i class="fab fa-google-play"></i> Google Play</button>
+                    <button class="app-btn"><i class="fab fa-apple"></i> App Store</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Shopaholic. All Rights Reserved. Made with <i class="fas fa-heart" style="color:#ff4757;"></i> in India</p>
+        </div>
+    </footer>
+
+    <!-- Overlay for sidebars -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- JavaScript Modules -->
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+    <!-- Test Script -->
+<script>
+    // Emergency test to check if products are loading
+    window.onload = function() {
+        console.log('🔍 Page loaded, checking for products...');
+        setTimeout(() => {
+            const grid = document.getElementById('productsGrid');
+            if (grid && grid.children.length === 0) {
+                console.error('❌ No products found! Adding emergency products...');
+                grid.innerHTML = `
+                    <div class="product-card">
+                        <div class="product-image">👕</div>
+                        <div class="product-name">Men's Cotton Kurti</div>
+                        <div class="product-price">₹899</div>
+                        <button class="btn-add-cart">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">👗</div>
+                        <div class="product-name">Women's Lehenga</div>
+                        <div class="product-price">₹2499</div>
+                        <button class="btn-add-cart">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">👟</div>
+                        <div class="product-name">Sports Shoes</div>
+                        <div class="product-price">₹999</div>
+                        <button class="btn-add-cart">Add to Cart</button>
+                    </div>
+                `;
+            }
+        }, 2000);
+    };
+</script>
+</body>
+</html>
