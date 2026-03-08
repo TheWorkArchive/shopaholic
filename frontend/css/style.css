@@ -35,6 +35,7 @@ body {
     background: linear-gradient(90deg, var(--primary), var(--secondary));
     color: white;
     padding: 0.5rem 0;
+    width: 100%;
 }
 
 .banner-content {
@@ -61,6 +62,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
+    width: 100%;
 }
 
 .header-container {
@@ -86,13 +88,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: var(--light);
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .logo img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    border-radius: 12px;
 }
 
 .brand h1 {
@@ -113,6 +117,11 @@ body {
     align-items: center;
 }
 
+.welcome-text {
+    font-weight: 500;
+    color: var(--dark);
+}
+
 /* ===== BUTTONS ===== */
 .btn-outline {
     padding: 0.6rem 1.5rem;
@@ -124,6 +133,7 @@ body {
     cursor: pointer;
     transition: all 0.2s;
     font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
 }
 
 .btn-outline:hover {
@@ -142,6 +152,7 @@ body {
     box-shadow: 0 8px 18px rgba(255,71,87,0.3);
     transition: all 0.2s;
     font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
 }
 
 .btn-primary:hover {
@@ -156,6 +167,7 @@ body {
     overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
+    width: 100%;
 }
 
 .nav-container {
@@ -176,6 +188,12 @@ body {
     align-items: center;
     gap: 0.5rem;
     transition: all 0.2s;
+    cursor: pointer;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 1rem;
 }
 
 .nav-item:hover,
@@ -215,10 +233,16 @@ body {
     color: var(--primary);
     font-size: 1.1rem;
     padding: 1rem 3rem;
+    border: none;
+    border-radius: var(--border-radius-lg);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
 }
 
 .shop-now-btn:hover {
     background: #f8f9fa;
+    transform: translateY(-2px);
 }
 
 /* ===== INDICATORS ===== */
@@ -308,6 +332,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background: white;
     cursor: pointer;
+    font-size: 0.9rem;
 }
 
 .filter-select:focus {
@@ -368,18 +393,36 @@ body {
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 600;
+    z-index: 2;
 }
 
 .product-category {
     color: var(--gray);
     font-size: 0.8rem;
     margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .product-name {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.product-rating {
+    color: #ffa502;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.product-rating span {
+    color: var(--gray);
+    margin-left: 0.3rem;
 }
 
 .product-price {
@@ -399,12 +442,6 @@ body {
     font-size: 1rem;
     color: var(--gray);
     text-decoration: line-through;
-}
-
-.product-rating {
-    color: #ffa502;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
 }
 
 .product-actions {
@@ -428,6 +465,7 @@ body {
     gap: 0.5rem;
     transition: all 0.2s;
     font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
 }
 
 .btn-add-cart:hover {
@@ -443,6 +481,10 @@ body {
     font-size: 1.2rem;
     cursor: pointer;
     transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem;
 }
 
 .btn-add-wish:hover {
@@ -500,6 +542,7 @@ body {
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--gray);
+    padding: 0.5rem;
 }
 
 .cart-items,
@@ -539,12 +582,14 @@ body {
 .wishlist-item-name {
     font-weight: 600;
     margin-bottom: 0.3rem;
+    font-size: 1rem;
 }
 
 .cart-item-price,
 .wishlist-item-price {
     color: var(--primary);
     font-weight: 700;
+    font-size: 1.1rem;
 }
 
 .cart-item-quantity {
@@ -561,21 +606,35 @@ body {
     background: white;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-btn:hover {
+    background: var(--light);
 }
 
 .quantity-value {
     font-weight: 600;
+    min-width: 30px;
+    text-align: center;
 }
 
 .remove-item {
     color: var(--danger);
     cursor: pointer;
     font-size: 1.2rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
 }
 
 .cart-footer {
     padding: 1.5rem;
     border-top: 2px solid var(--light);
+    background: white;
 }
 
 .cart-total {
@@ -589,6 +648,7 @@ body {
 .checkout-btn {
     width: 100%;
     padding: 1rem;
+    font-size: 1rem;
 }
 
 /* ===== MODAL ===== */
@@ -629,6 +689,10 @@ body {
     color: var(--gray);
 }
 
+.close-modal:hover {
+    color: var(--primary);
+}
+
 .payment-summary {
     background: var(--light);
     padding: 1rem;
@@ -640,6 +704,7 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0;
+    font-size: 1rem;
 }
 
 .payment-methods {
@@ -654,6 +719,42 @@ body {
     border: 1px solid var(--light);
     border-radius: var(--border-radius-sm);
     margin: 0.5rem 0;
+}
+
+.payment-option input[type="radio"] {
+    cursor: pointer;
+}
+
+.payment-option label {
+    cursor: pointer;
+    flex: 1;
+}
+
+/* ===== AUTH MODALS ===== */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--border-radius-lg);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
 }
 
 /* ===== OVERLAY ===== */
@@ -678,6 +779,7 @@ body {
     color: white;
     margin-top: 4rem;
     padding: 3rem 0 1rem;
+    width: 100%;
 }
 
 .footer-content {
@@ -692,6 +794,7 @@ body {
 .footer-section h4 {
     margin-bottom: 1rem;
     color: var(--secondary);
+    font-size: 1.2rem;
 }
 
 .footer-section a {
@@ -746,6 +849,8 @@ body {
     justify-content: center;
     gap: 0.5rem;
     transition: background 0.2s;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
 }
 
 .app-btn:hover {
@@ -758,6 +863,7 @@ body {
     padding-top: 1rem;
     border-top: 1px solid rgba(255,255,255,0.1);
     color: #a4b0be;
+    font-size: 0.9rem;
 }
 
 /* ===== LOADING SPINNER ===== */
@@ -782,6 +888,46 @@ body {
     100% { transform: rotate(360deg); }
 }
 
+/* ===== NOTIFICATION ===== */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideIn 0.3s ease;
+    font-weight: 500;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .header-container {
@@ -800,6 +946,7 @@ body {
     
     .indicators-container {
         flex-direction: column;
+        align-items: stretch;
     }
     
     .indicator {
@@ -814,10 +961,11 @@ body {
     
     .filter-controls {
         width: 100%;
+        flex-direction: column;
     }
     
     .filter-select {
-        flex: 1;
+        width: 100%;
     }
     
     .cart-sidebar,
@@ -833,4 +981,38 @@ body {
     .hero-content h2 {
         font-size: 1.8rem;
     }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-center {
+    text-align: center;
+}
+
+.mt-2 {
+    margin-top: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 1rem;
+}
+
+.hidden {
+    display: none !important;
 }
